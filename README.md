@@ -3,20 +3,20 @@
 </p>
 
 <p align="center">
-  <strong>GPU 编程 · LLM 推理系统 · 可复现实验</strong>
+  <strong>GPU Programming · LLM Inference Systems · Reproducible Experiments</strong>
 </p>
 
-我正在学习 GPU 编程与大模型推理系统，重点关注 CUDA kernel 的实现、正确性验证和性能分析。这里展示有代码、测量方法和结果记录的项目。
+I am learning GPU programming and LLM inference systems, with a focus on CUDA kernel implementation, correctness checks, and performance analysis. This page highlights projects with inspectable code, measurement methods, and results.
 
-## 代表项目
+## Selected Projects
 
-| [LLM 推理系统练习](https://github.com/Thymos2027/llm-inference-lab) | [期刊个人归档工具](https://github.com/Thymos2027/periodical-archiver) |
+| [LLM Inference Lab](https://github.com/Thymos2027/llm-inference-lab) | [Periodical Archiver](https://github.com/Thymos2027/periodical-archiver) |
 | :--- | :--- |
-| 从 naive 到 shared memory、register tiling，逐步实现 FP32 CUDA 矩阵乘法；用 CUDA Event、Nsight 和 SASS 分析性能。 | 使用 Playwright 采集已获授权阅读的期刊内容，生成 EPUB、PDF、TXT、封面和摘要；支持失败记录与断点续抓。 |
-| `CUDA` `C++` `GPU Profiling` | `JavaScript` `Playwright` `自动化` |
+| Implemented FP32 CUDA matrix multiplication kernels from a naive baseline through shared memory and register tiling; analyzed performance with CUDA Events, Nsight, and SASS. | Built a Playwright workflow for archiving periodicals available through an authorized account. It produces EPUB, PDF, TXT, covers, and issue summaries, with failure tracking and resumable fetching. |
+| `CUDA` `C++` `GPU Profiling` | `JavaScript` `Playwright` `Automation` |
 
-### 一组可检查的实验结果
+### A Reproducible Benchmark
 
-在 RTX 5060 Ti 上，`1024³` 矩阵乘法的 register tiling kernel 中位时间为 **0.402 ms**，相对同程序 tiled 基线 **2.68×**。在 `M=1` 的形状上，同一版本反而更慢。[查看测量条件、正确性检查与完整数据 →](https://github.com/Thymos2027/llm-inference-lab/blob/main/01-cuda-matmul/BENCHMARKS.md)
+On an RTX 5060 Ti, the register tiling kernel reached a median time of **0.402 ms** for `1024³` matrix multiplication, a **2.68×** speedup over the tiled baseline measured in the same program. For the `M=1` shape, the same kernel was slower. [See the measurement conditions, correctness checks, and full results →](https://github.com/Thymos2027/llm-inference-lab/blob/main/01-cuda-matmul/BENCHMARKS.md)
 
-> 以上是 FP32 矩阵乘法 kernel 的计时结果，不代表完整模型的推理吞吐。
+> These are FP32 matrix multiplication kernel timings, not end-to-end model inference throughput.
